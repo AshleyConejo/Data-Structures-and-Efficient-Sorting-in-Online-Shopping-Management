@@ -7,5 +7,7 @@ class Product:
         self.pd_Name = pd_Price
         self.pd_Category = pd_Category
 
-    def __repr__(self):
-        
+    def write_product_file(self,product_file):
+        product_file = open("product_data.txt","‘w+")
+        product_file.writelines(f"{self.pd_ID}{self.pd_Name}{self.pd_Price}{self.pd_Category}")
+        return product_file 
