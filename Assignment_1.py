@@ -76,7 +76,7 @@ class Product_info:
         else:
             print("Product was not found in the file.")
 
-def search_product(self):
+    def search_product(self):
         product_file = open("product_data.txt","r+")
         reading_file = product_file.read()
         
@@ -89,7 +89,35 @@ def search_product(self):
         else:
             print(f"Element NOT Found: {product_to_search} at index.")
 
+    def partition(self, Products, Low, High):
+        
+        Pivot = Products[High]
+        mean_price = Low -1 
 
+        for price in range(Low,High):
+            if Products[price] <= Pivot:
+                mean_price = mean_price + 1
+                (Products[mean_price], Products[price]) = (Products[price], Products[mean_price])
+
+        Products[mean_price+1], Products[High] = Products[High], Products[mean_price+1]
+        return mean_price + 1
+
+    def quick_sort(self, Products , low=0, high=1000):
+        product_file = open("product_data.txt","r+")
+        reading_file = product_file.read()
+        sorting_array = reading_file.strip().split(',')
+        price = float(sorting_array [2])
+
+        arrayempty = [price]
+
+        if low < high:
+            pi = self.partition(Products, low, high)
+            self.quick_sort(Products, low, pi - 1)
+            self.quick_sort(Products, pi + 1, high) 
+            size = len(arrayempty)
+            self.quick_sort(arrayempty, 0, size - 1)   
+            self.quick_sort(arrayempty)
+            print("Soeted Product List: ", arrayempty)
          
 pd_list= Product_info()
  
