@@ -46,6 +46,36 @@ class Product_info:
         else:
             print("Product was not found in the file.")
 
+    def delete_product(self):
+        product_file = open("product_data.txt","r+")
+        reading_file = product_file.read()
+        
+        product_to_delete = input("product to delete: ")
+        
+        
+        if product_to_delete in reading_file:
+            print("Please enter the information from the product to delete.")
+            deleted_ID = input("ID: ")
+            deleted_Name = input("Name:")
+            deleted_Price = input("Price: ")
+            deleted_Category = input("Category: ")
+        
+            
+            arrayempty= f"{deleted_ID},{deleted_Name},{deleted_Price},{deleted_Category}\n"
+            reading_file = reading_file.replace(arrayempty, '')
+
+            product_file.seek(0)
+            product_file.truncate()
+            product_file.write(reading_file)
+
+           
+            print("Prroduct has been removed.")  
+
+         
+            
+        else:
+            print("Product was not found in the file.")
+
 def search_product(self):
         product_file = open("product_data.txt","r+")
         reading_file = product_file.read()
