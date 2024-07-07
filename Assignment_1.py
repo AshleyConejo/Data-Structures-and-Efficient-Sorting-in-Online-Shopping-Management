@@ -45,3 +45,46 @@ class Product_info:
             
         else:
             print("Product was not found in the file.")
+
+def search_product(self):
+        product_file = open("product_data.txt","r+")
+        reading_file = product_file.read()
+        
+        product_to_search = input("product to search'eg: ID or Name : ")
+        
+        if product_to_search in reading_file:
+            reading_file.index(product_to_search)
+            print(f"Element Found: {product_to_search} at index.")
+          
+        else:
+            print(f"Element NOT Found: {product_to_search} at index.")
+
+
+         
+pd_list= Product_info()
+ 
+while True:
+    print("Available Options")
+    print("\t1) Insert")
+    print("\t2) Update")
+    print("\t3) Delete")
+    print("\t4) Search")
+    print("\t5) Sort")
+    user_option = input("Chose one option using numbers EX:1,2,3... ")  
+
+    if user_option == '1':
+        pd_list.insert_product()
+        
+    elif user_option == '2':
+        pd_list.update_product()
+
+    elif user_option == '3': 
+        pd_list.delete_product() 
+
+    elif user_option == '4':
+         pd_list.search_product()
+
+    elif user_option == '5':
+        break
+    else:
+        print("Invalid choice. Please try again.")
