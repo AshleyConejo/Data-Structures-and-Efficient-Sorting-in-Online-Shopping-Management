@@ -89,35 +89,34 @@ class Product_info:
         else:
             print(f"Element NOT Found: {product_to_search} at index.")
 
-    def partition(self, Products, Low, High):
+    def sort_products(self):  
+        product_file = open("product_data.txt","r")
+        reading_file = product_file.readlines()
+        print('1')
         
-        Pivot = Products[High]
-        mean_price = Low -1 
+        arrayempty = []
+        
+        
+        for arraylisted in reading_file:
+            arraylisted = arraylisted.strip().split(',')
+            arraylisted[2] = float(arraylisted[2])
+            arrayempty.append(arraylisted)
+            
 
-        for price in range(Low,High):
-            if Products[price] <= Pivot:
-                mean_price = mean_price + 1
-                (Products[mean_price], Products[price]) = (Products[price], Products[mean_price])
+            lenghtarray = len(arrayempty)
+            
+            for higher_cost in range(lenghtarray):
+                for lower_cost in range(0,lenghtarray - higher_cost -1):
+                    if arrayempty[lower_cost][2] > arrayempty[lower_cost + 1][2]:
+                        arrayempty[lower_cost], arrayempty[lower_cost + 1] = arrayempty[lower_cost + 1 ], arrayempty[lower_cost]
+            
+        for higher_cost in range(len(arrayempty)):
+            arrayempty[higher_cost][2] = str(arrayempty[higher_cost][2])
+        product_file = open("product_data.txt", "w")
 
-        Products[mean_price+1], Products[High] = Products[High], Products[mean_price+1]
-        return mean_price + 1
-
-    def quick_sort(self, Products , low=0, high=1000):
-        product_file = open("product_data.txt","r+")
-        reading_file = product_file.read()
-        sorting_array = reading_file.strip().split(',')
-        price = float(sorting_array [2])
-
-        arrayempty = [price]
-
-        if low < high:
-            pi = self.partition(Products, low, high)
-            self.quick_sort(Products, low, pi - 1)
-            self.quick_sort(Products, pi + 1, high) 
-            size = len(arrayempty)
-            self.quick_sort(arrayempty, 0, size - 1)   
-            self.quick_sort(arrayempty)
-            print("Soeted Product List: ", arrayempty)
+        for product_in_list in arrayempty:
+            product_file.write(','.join(product_in_list) + '\n')
+            print("Your Products Have Been Sorted")
          
 pd_list= Product_info()
  
