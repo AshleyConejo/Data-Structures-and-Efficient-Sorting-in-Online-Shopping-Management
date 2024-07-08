@@ -13,7 +13,7 @@ HOW TO USE:
 2. Choose an Option: The script provides a menu with options to insert, update, delete, search, or sort products. Select an option by entering the corresponding number.
 3. Follow Prompts: Based on the chosen option, follow the prompts to enter product details or search criteria.
 
-kEEP IN MIND:
+KEEP IN MIND:
 1. Make sure the product_data.txt file is in the same directory as the script.
 2. The product file operations use the file mode 'r+', which requires the file to already exist. Ensure the file is created or change the mode to handle file creation.
 3. The script currently does not handle exceptions or errors for file operations or invalid inputs. Enhancements can be made to improve robustness and user experience.
