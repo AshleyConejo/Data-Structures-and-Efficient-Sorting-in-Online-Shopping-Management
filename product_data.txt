@@ -48,3 +48,7 @@
 25425, Mystery MGSPG, 783.17, Books
 69525, Camera XROCD, 76.05, Electronics
 44574, Knife Set ASRHX, 64.62, Home & Kitchen
+1234,Cookie Cutter,14.02,Kitchen
+1416,Box Cutter,10.05,House
+145,Blender,70.45,Kitchen
+

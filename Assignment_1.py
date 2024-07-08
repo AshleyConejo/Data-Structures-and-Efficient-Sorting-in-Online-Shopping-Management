@@ -28,7 +28,7 @@ class Product_info:
         arrayempty.insert(0,insert_statement)
         product_file.writelines(arrayempty)
 
-        print(f"You added this product into the file: ",{arrayempty})
+        print(f"You added this product into the file: ",{insert_statement})
                
     def update_product(self):
         product_file = open("product_data.txt","r+")
@@ -71,7 +71,6 @@ class Product_info:
            
             print("Prroduct has been removed.")  
 
-         
             
         else:
             print("Product was not found in the file.")
