@@ -1,3 +1,4 @@
+import time
 arrayempty = []
 class Product_info:
     def __init__(self):
@@ -88,21 +89,20 @@ class Product_info:
         else:
             print(f"Element NOT Found: {product_to_search} at index.")
 
-    def sort_products(self):  
+    def sort_products_ASC(self):  
+        
         product_file = open("product_data.txt","r")
         reading_file = product_file.readlines()
-        print('1')
-        
+
         arrayempty = []
-        
-        
+
         for arraylisted in reading_file:
             arraylisted = arraylisted.strip().split(',')
             arraylisted[2] = float(arraylisted[2])
             arrayempty.append(arraylisted)
-            
 
             lenghtarray = len(arrayempty)
+            start_timer = round(time.time()*10)
             
             for higher_cost in range(lenghtarray):
                 for lower_cost in range(0,lenghtarray - higher_cost -1):
@@ -115,8 +115,44 @@ class Product_info:
 
         for product_in_list in arrayempty:
             product_file.write(','.join(product_in_list) + '\n')
-            print("Your Products Have Been Sorted")
-         
+            stop_time = start_timer - time.time() 
+        print("Your Products Have Been Sorted in Acending Order")
+        print("Bubble Sort - Best: O(n), Average: O(n^2), Worst: O(n^2)")
+        print("It took ", stop_time, "miliseconds")
+
+    def sort_products_DESC(self):  
+        
+        product_file = open("product_data.txt","r")
+        reading_file = product_file.readlines()
+
+        arrayempty = []
+
+        for arraylisted in reading_file:
+            arraylisted = arraylisted.strip().split(',')
+            arraylisted[2] = float(arraylisted[2])
+            arrayempty.append(arraylisted)
+
+            lenghtarray = len(arrayempty)
+            start_timer = round(time.time()*10)
+            for higher_cost in range(lenghtarray):
+                for lower_cost in range(0,lenghtarray - higher_cost -1):
+                    if arrayempty[lower_cost][2] < arrayempty[lower_cost + 1][2]:
+                        
+                        arrayempty[lower_cost], arrayempty[lower_cost + 1] = arrayempty[lower_cost + 1 ], arrayempty[lower_cost]
+            
+        for higher_cost in range(len(arrayempty)):
+            arrayempty[higher_cost][2] = str(arrayempty[higher_cost][2])
+        product_file = open("product_data.txt", "w")
+
+        for product_in_list in arrayempty:
+            product_file.write(','.join(product_in_list) + '\n')
+            stop_time = start_timer - time.time() 
+
+        print("Your Products Have Been Sorted in Descending order ")
+        print("Bubble Sort - Best: O(n), Average: O(n^2), Worst: O(n^2)")
+        print("It took ", stop_time, "miliseconds")
+    
+          
 pd_list= Product_info()
  
 while True:
@@ -125,8 +161,9 @@ while True:
     print("\t2) Update")
     print("\t3) Delete")
     print("\t4) Search")
-    print("\t5) Sort")
-    user_option = input("Chose one option using numbers EX:1,2,3... ")  
+    print("\t5) Sort Ascending")
+    print("\t6) Sort Descending")
+    user_option = input("Chose one option using numbers EX:1,2,3...:  ")  
 
     if user_option == '1':
         pd_list.insert_product()
@@ -141,8 +178,15 @@ while True:
          pd_list.search_product()
 
     elif user_option == '5':
-        break
+        pd_list.sort_products_ASC()
+    
+    elif user_option == '6':
+        pd_list.sort_products_DESC()
+        
+        
     else:
         print("Invalid choice. Please try again.")
+        break
+
 
         
