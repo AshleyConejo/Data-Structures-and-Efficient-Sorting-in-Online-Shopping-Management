@@ -1,11 +1,12 @@
 Hello Everyone!
 
 This code allows users to execute different operations as: 
--Insert: which allows users to add a new product to the text file.
--Update: Updates information of an existing product in the text file.
--Delete: Deletes a product from the text file. 
--Search: Searches for a product by ID or name in the text file.
--Sorting: Sorts the products by price using the Quick Sort algorithm.
+
+1. Insert: which allows users to add a new product to the text file.
+2. Update: Updates information of an existing product in the text file.
+3. Delete: Deletes a product from the text file. 
+4. Search: Searches for a product by ID or name in the text file.
+5. Sorting: Sorts the products by price using the Quick Sort algorithm.
 
 HOW TO USE:
 1. Run the Script: Execute the script in your Python environment.
